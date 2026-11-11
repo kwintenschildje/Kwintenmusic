@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KWINTEN MUSIC</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101326;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(135deg,#4725a8,#111a42);
+}
+
+header h1 {
+  font-size: 38px;
+  margin: 5px;
+}
+
+header p {
+  color: #d4ccff;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 22px;
+}
+
+.search {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  font-size: 16px;
+}
+
+.profile {
+  text-align: center;
+  padding: 20px;
+  background: #1c2140;
+  border-radius: 18px;
+  margin-bottom: 25px;
+}
+
+.profile a {
+  color: #b8a5ff;
+}
+
+.songs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 16px;
+}
+
+.song {
+  background: #202644;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#6036cc,#182d70);
+}
+
+.song h3 {
+  margin-bottom: 5px;
+}
+
+.song p {
+  color: #bbbdd3;
+}
+
+.song audio {
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  color: #aaa;
+  padding: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎵 KWINTEN MUSIC</h1>
+  <p>Mijn muziekwereld</p>
+</header>
+
+<div class="container">
+
+  <div class="profile">
+    <h2>Welkom bij mijn muziek!</h2>
+    <p>Alle muziek van Kwinten</p>
+    <p>@kwintenschildje</p>
+  </div>
+
+  <input
+    class="search"
+    id="search"
+    placeholder="🔎 Zoek een liedje..."
+    oninput="filterSongs()"
+  >
+
+  <h2>🎧 Mijn liedjes</h2>
+
+  <div class="songs" id="songs">
+
+    <!-- Voeg hier je liedjes toe -->
+
+    <div class="song" data-title="Mijn eerste liedje">
+      <div class="cover"></div>
+      <h3>Mijn eerste liedje</h3>
+      <p>Kwinten</p>
+      <audio controls>
+        <source src="muziek/liedje1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 KWINTEN MUSIC
+</footer>
+
+<script>
+function filterSongs() {
+  const search = document
+    .getElementById("search")
+    .value.toLowerCase();
+
+  document.querySelectorAll(".song").forEach(song => {
+    song.style.display =
+      song.dataset.title.toLowerCase().includes(search)
+      ? ""
+      : "none";
+  });
+}
+</script>
+
+</body>
+</html>
